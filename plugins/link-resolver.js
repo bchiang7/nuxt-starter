@@ -7,8 +7,12 @@ export default function(doc) {
     return '/not-found';
   }
 
-  if (doc.type === 'blog_home') {
+  if (doc.type === 'home') {
     return '/';
+  }
+
+  if (doc.type === 'about') {
+    return '/about';
   }
 
   if (doc.type === 'post') {

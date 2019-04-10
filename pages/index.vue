@@ -26,6 +26,9 @@
         >
           GitHub
         </a>
+        <nuxt-link to="/about">
+          About
+        </nuxt-link>
       </div>
     </div>
 
