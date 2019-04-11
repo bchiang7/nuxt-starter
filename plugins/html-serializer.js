@@ -1,11 +1,16 @@
-import linkResolver from './link-resolver';
+/**
+ * To learn more about HTML Serializer check out the Prismic documentation
+ * https://prismic.io/docs/vuejs/beyond-the-api/html-serializer
+ */
+
 import prismicDOM from 'prismic-dom';
+import linkResolver from './link-resolver';
 
 const Elements = prismicDOM.RichText.Elements;
 
 // eslint-disable-next-line
 export default function(type, element, content, children) {
-  // Generate links to Prismic Documents as <router-link> components
+  // Generate links to Prismic Documents as <nuxt-link> components
   // Present by default, it is recommended to keep this
   if (type === Elements.hyperlink) {
     let result = '';
@@ -20,7 +25,7 @@ export default function(type, element, content, children) {
     return result;
   }
 
-  // If the image is also a link to a Prismic Document, it will return a <router-link> component
+  // If the image is also a link to a Prismic Document, it will return a <nuxt-link> component
   // Present by default, it is recommended to keep this
   if (type === Elements.image) {
     let result = `<img src="${element.url}" alt="${element.alt ||

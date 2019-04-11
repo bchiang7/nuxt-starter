@@ -11,6 +11,7 @@ import PrismicConfig from '~/prismic.config.js';
 
 export default {
   name: 'Preview',
+
   async asyncData({ query, redirect }) {
     const previewToken = query.token;
     const api = await Prismic.getApi(PrismicConfig.apiEndpoint);
