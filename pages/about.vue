@@ -3,7 +3,7 @@
     <div>
       <logo />
       <h1 class="title">
-        nuxt-starter
+        nuxt-starter about page
       </h1>
       <h2 class="subtitle">
         My splendid Nuxt.js project
@@ -23,10 +23,6 @@
         >
           GitHub
         </a>
-
-        <nuxt-link to="/about">
-          About
-        </nuxt-link>
       </div>
     </div>
   </section>
