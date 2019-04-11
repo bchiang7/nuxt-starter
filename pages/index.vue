@@ -35,12 +35,12 @@
     <br>
 
     <div>
-      <img :src="image" alt="linus">
-      <!-- Template for page title -->
+      <img :src="homepageContent.image.url" alt="linus">
+
       <h1 class="blog-title">
         {{ $prismic.richTextAsPlain(homepageContent.headline) }}
       </h1>
-      <!-- Template for page description -->
+
       <p class="blog-description">
         {{ $prismic.richTextAsPlain(homepageContent.description) }}
       </p>
@@ -58,11 +58,13 @@ export default {
   components: {
     Logo,
   },
+
   head() {
     return {
       title: 'Nuxt & Prismic',
     };
   },
+
   // eslint-disable-next-line
   async asyncData({ context, error, req }) {
     try {
@@ -73,12 +75,6 @@ export default {
       const document = await api.getSingle('home');
       const homepageContent = document.data;
 
-      // // Query to get posts content to preview
-      // const blogPosts = await api.query(
-      //   Prismic.Predicates.at('document.type', 'post'),
-      //   { orderings: '[my.post.date desc]' }
-      // );
-
       // Load the edit button
       if (process.client) {
         window.prismic.setupEditButton();
@@ -88,8 +84,6 @@ export default {
       return {
         homepageContent,
         documentId: document.id,
-        // posts: blogPosts.results,
-        image: homepageContent.image.url,
       };
     } catch (e) {
       // Returns error page
