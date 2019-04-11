@@ -3,7 +3,7 @@
     <div>
       <logo />
       <h1 class="title">
-        nuxt-starter
+        about nuxt-starter
       </h1>
       <h2 class="subtitle">
         My splendid Nuxt.js project
@@ -29,7 +29,7 @@
         </nuxt-link>
       </div>
 
-      <div v-html="$prismic.asHtml(document.data.headline)" />
+      <div v-html="$prismic.asHtml(document.data.title)" />
     </div>
   </section>
 </template>
@@ -43,7 +43,7 @@ export default {
   },
 
   async asyncData({ app, error }) {
-    const document = await app.$prismic.api.getSingle('home');
+    const document = await app.$prismic.api.getSingle('about');
 
     if (document) {
       return { document };
