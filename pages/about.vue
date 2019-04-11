@@ -34,12 +34,6 @@ export default {
       const document = await api.getSingle('about');
       const content = document.data;
 
-      // // Query to get posts content to preview
-      // const blogPosts = await api.query(
-      //   Prismic.Predicates.at('document.type', 'post'),
-      //   { orderings: '[my.post.date desc]' }
-      // );
-
       // Load the edit button
       if (process.client) {
         window.prismic.setupEditButton();
@@ -49,11 +43,9 @@ export default {
       return {
         content,
         documentId: document.id,
-        // posts: blogPosts.results,
         image: content.image.url,
       };
     } catch (e) {
-      // Returns error page
       error({ statusCode: 404, message: 'Page not found' });
     }
   },
