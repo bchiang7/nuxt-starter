@@ -24,7 +24,8 @@
   "dependencies": {
     "@nuxtjs/style-resources": "^0.1.2",
     "cross-env": "^5.2.0",
-    "nuxt": "^2.6.1"
+    "nuxt": "^2.6.1",
+    "prismic-nuxt": "^0.5.1"
   },
   "devDependencies": {
     "@upstatement/eslint-config": "^0.4.2",

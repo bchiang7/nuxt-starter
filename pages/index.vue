@@ -24,6 +24,8 @@
           GitHub
         </a>
       </div>
+
+      <div v-html="$prismic.asHtml(document.data.headline)" />
     </div>
   </section>
 </template>
@@ -34,6 +36,16 @@ import Logo from '~/components/Logo.vue';
 export default {
   components: {
     Logo,
+  },
+
+  async asyncData({ app, error }) {
+    const document = await app.$prismic.api.getSingle('home');
+
+    if (document) {
+      return { document };
+    } else {
+      error({ statusCode: 404, message: 'Page not found' });
+    }
   },
 };
 </script>

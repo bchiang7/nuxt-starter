@@ -34,7 +34,17 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: ['@nuxtjs/style-resources'],
+  modules: [
+    '@nuxtjs/style-resources',
+
+    ['prismic-nuxt', {
+      endpoint: 'https://bchiang7.cdn.prismic.io/api/v2',
+      // eslint-disable-next-line
+      linkResolver: function(doc, ctx) {
+        return '/';
+      },
+    }],
+  ],
 
   // https://github.com/nuxt-community/style-resources-module
   styleResources: {
