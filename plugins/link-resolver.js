@@ -4,7 +4,7 @@
 
 export default function(doc) {
   if (doc.isBroken) {
-    return '/not-found';
+    return '/404';
   }
 
   if (doc.type === 'home') {
@@ -19,5 +19,5 @@ export default function(doc) {
     return `/blog/${doc.uid}`;
   }
 
-  return '/not-found';
+  return '/';
 }

@@ -35,15 +35,15 @@
     <br>
 
     <div>
-      <img :src="homepageContent.image.url" alt="linus">
-
-      <h1 class="blog-title">
-        {{ $prismic.richTextAsPlain(homepageContent.headline) }}
+      <h1>
+        {{ $prismic.richTextAsPlain(content.headline) }}
       </h1>
 
-      <p class="blog-description">
-        {{ $prismic.richTextAsPlain(homepageContent.description) }}
+      <p>
+        {{ $prismic.richTextAsPlain(content.description) }}
       </p>
+
+      <img :src="content.image.url" alt="linus">
     </div>
   </section>
 </template>
@@ -55,6 +55,8 @@ import PrismicConfig from '~/prismic.config.js';
 import Logo from '~/components/Logo.vue';
 
 export default {
+  name: 'Index',
+
   components: {
     Logo,
   },
@@ -73,7 +75,7 @@ export default {
 
       // Query to get blog home content
       const document = await api.getSingle('home');
-      const homepageContent = document.data;
+      const content = document.data;
 
       // Load the edit button
       if (process.client) {
@@ -82,7 +84,7 @@ export default {
 
       // Returns data to be used in template
       return {
-        homepageContent,
+        content,
         documentId: document.id,
       };
     } catch (e) {
