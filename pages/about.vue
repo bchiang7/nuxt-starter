@@ -37,13 +37,26 @@
 <script>
 import Logo from '~/components/Logo.vue';
 
+function getPage(prismic) {
+  return prismic.api.getByUID('about');
+}
+
 export default {
   components: {
     Logo,
   },
 
+  // async asyncData({ app, error }) {
+  //   const document = await app.$prismic.api.getSingle('about');
+
+  //   if (document) {
+  //     return { document };
+  //   } else {
+  //     error({ statusCode: 404, message: 'Page not found' });
+  //   }
+  // },
   async asyncData({ app, error }) {
-    const document = await app.$prismic.api.getSingle('about');
+    const document = await getPage(app.$prismic);
 
     if (document) {
       return { document };
@@ -51,6 +64,13 @@ export default {
       error({ statusCode: 404, message: 'Page not found' });
     }
   },
+
+  created() {
+    getPage(this.$prismic).then(document => {
+      this.document = document;
+    });
+  },
+
 };
 </script>
 
