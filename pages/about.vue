@@ -38,7 +38,7 @@
 import Logo from '~/components/Logo.vue';
 
 function getPage(prismic) {
-  return prismic.api.getByUID('about');
+  return prismic.api.getSingle('about');
 }
 
 export default {
