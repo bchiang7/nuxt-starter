@@ -77,20 +77,24 @@ export default {
       const document = await api.getSingle('home');
       const content = document.data;
 
-      // Load the edit button
-      if (process.client) {
-        window.prismic.setupEditButton();
-      };
-
       // Returns data to be used in template
       return {
-        content,
         documentId: document.id,
+        content,
       };
     } catch (e) {
+      console.error(e);
       // Returns error page
       error({ statusCode: 404, message: 'Page not found' });
     }
+  },
+
+  mounted() {
+    // Load the edit button
+    if (process.client && window !== 'undefined') {
+      console.warn('set up edit button');
+      window.prismic.setupEditButton();
+    };
   },
 };
 </script>

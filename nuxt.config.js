@@ -37,7 +37,7 @@ export default {
    */
   plugins: [
     '~/plugins/link-resolver.js',
-    // '~/plugins/html-serializer.js',
+    '~/plugins/html-serializer.js',
     '~/plugins/prismic-vue.js',
   ],
 

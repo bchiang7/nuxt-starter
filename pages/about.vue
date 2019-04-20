@@ -63,27 +63,28 @@ export default {
   // eslint-disable-next-line
   async asyncData({ context, error, req }) {
     try {
-      // Query to get API object
       const api = await Prismic.getApi(PrismicConfig.apiEndpoint, { req });
-
-      // Query to get blog home content
       const document = await api.getSingle('about');
       const content = document.data;
 
-      // Load the edit button
-      if (process.client) {
-        window.prismic.setupEditButton();
-      };
-
       // Returns data to be used in template
       return {
-        content,
         documentId: document.id,
+        content,
       };
     } catch (e) {
+      console.error(e);
       // Returns error page
       error({ statusCode: 404, message: 'Page not found' });
     }
+  },
+
+  mounted() {
+    // Load the edit button
+    if (process.client && window !== 'undefined') {
+      console.warn('set up edit button about page');
+      window.prismic.setupEditButton();
+    };
   },
 };
 </script>
