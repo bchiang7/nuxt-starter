@@ -91,7 +91,7 @@ export default {
 
   mounted() {
     // Load the edit button
-    if (process.client && window !== 'undefined') {
+    if (process.client && process.env.NODE_ENV === 'development') {
       console.warn('set up edit button');
       window.prismic.setupEditButton();
     };
